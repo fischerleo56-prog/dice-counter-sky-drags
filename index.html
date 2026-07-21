@@ -37,6 +37,7 @@ input{width:45%;padding:14px;background:#222;border:1px solid #555;color:#fff;bo
 <button class='neg full' onclick='chg(-0.25)'>-0.25</button>
 <button class='pos' onclick='chg(1)'>+1</button><button class='pos' onclick='chg(2)'>+2</button><button class='pos' onclick='chg(3)'>+3</button>
 <button class='pos full' onclick='chg(0.25)'>+0.25</button></div>
+<div style='margin:10px 0'><button onclick='resetCounter()' style='width:100%;background:#4d7cff'>RESET TO 0</button></div>
 <div><input id='v1' placeholder='- amount'><input id='v2' placeholder='+ amount'></div>
 <div class='actions'><button class='sub' onclick='chg(-parseFloat(v1.value||0))'>SUBTRACT</button><button class='add' onclick='chg(parseFloat(v2.value||0))'>ADD</button></div>
 </div>
@@ -80,6 +81,12 @@ function fly(t,c){let d=document.createElement('div');d.className='fly';d.style.
     }
 }
 window.chg = chg;
+
+window.resetCounter = function(){
+  n = 0;
+  set(ref(db, "dragons"), 0);
+};
+
 
 function energyFx(v){
   const top = document.querySelector(".top");
